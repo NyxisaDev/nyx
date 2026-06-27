@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://nyxisadev.github.io/nyx/sitemap.xml
