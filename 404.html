@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NYX.</title>
+  </head>
+  <body>
+    <script>
+      const sections = new Set(["about", "setup", "contact"]);
+      const parts = window.location.pathname.split("/").filter(Boolean);
+      const section = parts.at(-1);
+
+      if (sections.has(section)) {
+        window.sessionStorage.setItem("nyx:redirect-section", section);
+        parts.pop();
+      }
+
+      const base = parts.length ? `/${parts.join("/")}/` : "/";
+      window.location.replace(`${window.location.origin}${base}`);
+    </script>
+  </body>
+</html>
