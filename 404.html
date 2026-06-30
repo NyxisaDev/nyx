@@ -11,7 +11,10 @@
       const parts = window.location.pathname.split("/").filter(Boolean);
       const section = parts.at(-1);
 
-      if (sections.has(section)) {
+      if (section === "stream") {
+        window.sessionStorage.setItem("nyx:redirect-page", section);
+        parts.pop();
+      } else if (sections.has(section)) {
         window.sessionStorage.setItem("nyx:redirect-section", section);
         parts.pop();
       }
