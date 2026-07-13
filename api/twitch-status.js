@@ -1,12 +1,18 @@
+const configuredOrigins = (process.env.ALLOWED_ORIGINS || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 const allowedOrigins = new Set([
-  "https://nyxweb.space",
-  "https://www.nyxweb.space",
-  "https://nyxisadev.github.io",
+  "https://zpltjn.lol",
+  "https://www.zpltjn.lol",
+  "https://zpltjn.github.io",
   "http://127.0.0.1:5173",
   "http://localhost:5173",
+  ...configuredOrigins,
 ]);
 
-const channelLogin = "psychosocial_nyx";
+const channelLogin = process.env.TWITCH_CHANNEL_LOGIN || "zpltjn";
 let tokenCache = null;
 
 function applyCors(request, response) {

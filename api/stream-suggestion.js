@@ -1,8 +1,15 @@
+const configuredOrigins = (process.env.ALLOWED_ORIGINS || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 const allowedOrigins = new Set([
-  "https://nyxweb.space",
-  "https://www.nyxweb.space",
-  "https://nyxisadev.github.io",
+  "https://zpltjn.lol",
+  "https://www.zpltjn.lol",
+  "https://zpltjn.github.io",
   "http://127.0.0.1:5173",
+  "http://localhost:5173",
+  ...configuredOrigins,
 ]);
 
 function clean(value, limit) {
@@ -48,7 +55,7 @@ export default async function handler(request, response) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: "NYX Stream Signal",
+        username: "ZPLTJN Stream Signal",
         allowed_mentions: { parse: [] },
         embeds: [
           {
@@ -58,7 +65,7 @@ export default async function handler(request, response) {
               { name: "Od", value: nickname, inline: true },
               { name: "Nápad", value: suggestion, inline: false },
             ],
-            footer: { text: "nyx / stream signal" },
+            footer: { text: "zpltjn / stream signal" },
             timestamp: new Date().toISOString(),
           },
         ],
